@@ -1,7 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"log"
+	"net/http"
+)
 
 func main() {
-	fmt.Println("Welcome to Booking App!")
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "Welcome to Booking App!")
+	})
+
+	log.Println("Starting server on :9090")
+	log.Fatal(http.ListenAndServe(":9090", nil))
 }
