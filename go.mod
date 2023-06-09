@@ -1,3 +1,3 @@
-module github.com/annriyabasant/bookingo
+module github.com/geordee/bookingo
 
 go 1.20
