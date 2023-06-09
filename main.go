@@ -8,7 +8,8 @@ import (
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, "Welcome to Booking App!")
+		fmt.Fprintf(w, "<h1>Booking App</h1>")
+		fmt.Fprintf(w, "<p>Welcome to Booking App!</p>")
 	})
 
 	log.Println("Starting server on :9090")
