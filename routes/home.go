@@ -1,16 +1,18 @@
 package routes
 
 import (
-	"fmt"
 	"net/http"
+	"text/template"
 )
 
+type Page struct {
+	Title   string
+	Header  string
+	Content string
+}
+
 func Home(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "<html>")
-	fmt.Fprintf(w, "<head><title>Booking App</title></head>")
-	fmt.Fprintf(w, "<body>")
-	fmt.Fprintf(w, "<h1>Booking App</h1>")
-	fmt.Fprintf(w, "<p>Welcome to Booking App!</p>")
-	fmt.Fprintf(w, "</body>")
-	fmt.Fprintf(w, "</html>")
+	tmpl := template.Must(template.ParseFiles("templates/layout.html"))
+	page := Page{Title: "Booking App", Header: "Booking App", Content: "Welcome to Booking App!"}
+	tmpl.Execute(w, page)
 }
